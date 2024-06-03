@@ -1,4 +1,4 @@
-#include "./header/prjrale.h"
+#include "./header/program.h"
 
 int main(){
     FILE *file = openFile();
