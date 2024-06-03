@@ -1,5 +1,5 @@
 ## A Customer Order Tracking program written in C programming Language (Linked List Implementation)
-### How to link program.c to todo_list.c:
+### How to link main.c to program.c:
 
 To link two c programs using gcc, enter this line in the terminal:
 
