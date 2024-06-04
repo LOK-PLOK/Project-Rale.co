@@ -64,7 +64,7 @@ Option landingScreen(){
 void doOption(Option option, List* head, FILE** file){
     switch(option){
         case READ: displayOrder(*head); break;
-        case ADD: addOrder(head, *file); break;
+        case ADD: addOrder(head); break;
         case EDIT: editOrder(*head); break;
         case DELETE: deleteOrder(head); break;
     }
@@ -287,7 +287,7 @@ Order createOrder(List* head){
     return temp;
 }
 
-void addOrder(List* head, FILE *file){
+void addOrder(List* head){
     Order new_order = createOrder(head); 
     
 
@@ -635,8 +635,8 @@ void savetoCSV(List head,const char* filename){
         return;
     }
 
-    /*Note to self: when dealing with csv file remember to put commas,because it will go crazy when 
-        you open the csv file in excel*/
+    /*Note to self: when dealing with csv file remember to use comma in seperating
+        values like ID,Customer and etc. Because it will go crazy when you open the csv file in excel*/
 
     // Write CSV header
     fprintf(fptr, "ID,Customer,Email,Design,Color,Size,Qty,Status\n");

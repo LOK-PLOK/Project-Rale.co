@@ -64,7 +64,7 @@ void displayOrder(List head);
 int isGmail(char *email);
 void capital(char* Name);
 Order createOrder(List* head);
-void addOrder(List* head, FILE* file);
+void addOrder(List* head);
 List tobeEdited(List head, int id);
 void editOrder(List head);
 void editName(List edit);
