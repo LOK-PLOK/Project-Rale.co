@@ -635,7 +635,7 @@ void savetoCSV(List head,const char* filename){
         return;
     }
 
-    /*Note to self: when dealing with csv file,because it will go crazy when 
+    /*Note to self: when dealing with csv file remember to put commas,because it will go crazy when 
         you open the csv file in excel*/
 
     // Write CSV header
