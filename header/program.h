@@ -77,5 +77,6 @@ void editStatus(List edit);
 void deleteOrder(List* head);
 void freeAll(List head);
 void save(FILE** file, List head);
+void savetoCSV(List head,const char* filename);
 void end(FILE *fptr, List head);
 #endif

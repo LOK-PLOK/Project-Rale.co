@@ -283,7 +283,7 @@ Order createOrder(List* head){
     flush;
     scanf("%d", &quantity);
     temp.quantity = quantity;
-
+    system("cls");
     return temp;
 }
 
@@ -579,13 +579,85 @@ void save(FILE** file, List head){
     remove(filename);
     rename("./files/temp.dat", filename);
 }
+char* toCSV(Order order, char* container){
+    system("cls");
+    char design[20], color[20], size[15], status[20] = "";
+    switch(order.design){
+        case RANDOM: strcpy(design, "Random"); break;
+        case RESIST: strcpy(design, "Resist"); break;
+        case DEVOTION: strcpy(design, "Devotion"); break;
+        case PANTONE: strcpy(design, "Pantone"); break;
+        case HAPPYH: strcpy(design, "Happy Human"); break;
+        case EXEMPLIFY: strcpy(design, "Exemplify"); break;
+        case TEACHP: strcpy(design, "Teach Peace"); break;
+        case DQUIT: strcpy(design, "Don't Quit"); break;
+        case SINULOG: strcpy(design, "Sinulog"); break;
+    }
+
+    switch(order.color){
+        case RANDOMIZE: strcpy(color, "Randomized"); break;
+        case WHITE: strcpy(color, "White"); break;
+        case BLACK: strcpy(color, "Black"); break;
+        case PURPLE: strcpy(color, "Purple"); break;
+        case GREEN: strcpy(color, "Green"); break;
+        case RED: strcpy(color, "Red"); break;
+        case BLUE: strcpy(color, "Blue"); break;
+    }
+
+    switch(order.size){
+        case Small: strcpy(size, "Small"); break;
+        case Medium: strcpy(size, "Medium"); break;
+        case Large: strcpy(size, "Large"); break;
+        case XLarge: strcpy(size, "X-Large"); break;
+        case XXLarge: strcpy(size, "XX-Large"); break;
+        case XXXLarge: strcpy(size, "XXX-Large"); break;
+    }
+
+    switch(order.status){
+        case UNFINISHED: strcpy(status, "Deciding"); break;
+        case PENDING: strcpy(status, "In the making"); break;
+        case DONE: strcpy(status, "Done"); break;
+        case OTW: strcpy(status, "On the way"); break;
+        case DELIVERED: strcpy(status, "Delivered"); break;
+    }
+        /*Since it is a CSV file, the format specifiers should be
+        comma-seperated*/
+    sprintf(container,"%d,%s,%s,%s,%s,%s,%d,%s\n",order.cust_id,order.cust.Name, order.email, design, color, size, order.quantity, status);
+        
+    
+    return container;
+}
+
+void savetoCSV(List head,const char* filename){
+    FILE* fptr = fopen(filename, "w");
+    if(fptr == NULL){
+        printf("Failed to open file\n\n");
+        return;
+    }
+
+    /*Note to self: when dealing with csv file,because it will go crazy when 
+        you open the csv file in excel*/
+
+    // Write CSV header
+    fprintf(fptr, "ID,Customer,Email,Design,Color,Size,Qty,Status\n");
+
+    char container[256];
+    List curr = head;
+    while(curr != NULL){
+        fprintf(fptr,"%s",toCSV(curr->order,container));
+        curr = curr->next;
+    }
+
+    fclose(fptr);
+}
 
 void end(FILE *fptr, List head) {
     freeAll(head);
     fclose(fptr);
 
     system("cls");
-    printf("Thank you for using project rale.co .\n\n");
+    printf("Thank you for using project Rale.co!!!\n\n");
     printf("This is an inspirational idea of Todo-List program.\n\n");
+    printf("NOTE: you can open the \"orders.csv\" file in excel.\n\n");
     printf("\u00A9 Paul France M. Detablan\n\n");
 }

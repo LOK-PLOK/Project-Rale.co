@@ -11,6 +11,7 @@ int main(){
         option = landingScreen();
     }
     save(&file,head);
+    savetoCSV(head,"./files/orders.csv");
     end(file, head);
     return 0; 
 }
