@@ -73,9 +73,9 @@ void doOption(Option option, List* head, FILE** file){
 void displayOrder(List head){
     system("cls");
     if(head != NULL){
-        printf("%-10s%-25s%-40s%-20s%-20s%-15s%-10s%-20s\n","ID", "Customer", "Email", "Design", "Color", "Size", "Qty", "Status");
+        printf("%-5s%-20s%-40s%-15s%-10s%-15s%-10s%-20s\n","ID", "Customer", "Email", "Design", "Color", "Size", "Qty", "Status");
 
-        for(int i = 0; i < 160; i++) {
+        for(int i = 0; i < 135; i++) {
             printf("-");
         }
         printf("\n");
@@ -121,10 +121,10 @@ void displayOrder(List head){
                 case DELIVERED: strcpy(status, "Delivered"); break;
             }
 
-            printf("%-10d%-25s%-40s%-20s%-20s%-15s%-10d%-20s\n",curr->order.cust_id,curr->order.cust.Name, curr->order.email, design, color, size, curr->order.quantity, status);
+            printf("%-5d%-20s%-40s%-15s%-10s%-15s%-10d%-20s\n",curr->order.cust_id,curr->order.cust.Name, curr->order.email, design, color, size, curr->order.quantity, status);
         }
         printf("\n");
-        for(int i = 0; i < 160; i++) {
+        for(int i = 0; i < 135; i++) {
             printf("-");
         }
     }else{
@@ -636,7 +636,8 @@ void savetoCSV(List head,const char* filename){
     }
 
     /*Note to self: when dealing with csv file remember to use comma in seperating
-        values like ID,Customer and etc. Because it will go crazy when you open the csv file in excel*/
+        values like ID,Customer and etc. Because it will go crazy when you open the 
+        csv file in excel*/
 
     // Write CSV header
     fprintf(fptr, "ID,Customer,Email,Design,Color,Size,Qty,Status\n");

@@ -13,6 +13,7 @@
 #include <math.h>
 #define flush fflush(stdin)
 
+/** <--------------------------USER DEFINED DATATYPES----------------------------->**/
 typedef enum{
     READ, ADD, EDIT, DELETE, CLOSE
 }Option;
@@ -54,8 +55,9 @@ typedef struct node{
     Order order;
     struct node* next;
 }*List;
+/** <--------------------------USER DEFINED DATATYPES----------------------------->**/
 
-
+/** <--------------------------FUNCTION PROTOTYPES----------------------------->**/
 FILE* openFile();
 List getList(FILE* fptr);
 Option landingScreen();
@@ -79,4 +81,5 @@ void freeAll(List head);
 void save(FILE** file, List head);
 void savetoCSV(List head,const char* filename);
 void end(FILE *fptr, List head);
+/** <--------------------------FUNCTION PROTOTYPES----------------------------->**/
 #endif
